@@ -1,6 +1,8 @@
 import 'dart:async';
 
-import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_sqlcipher/sqflite.dart';
+
+import '../../../common/encrypt.dart';
 import '../../models/data_table.dart';
 
 class DatabaseHelper {
@@ -26,7 +28,14 @@ class DatabaseHelper {
     final path = await getDatabasesPath();
     final databasePath = '$path/dummyapi.db';
 
-    var db = await openDatabase(databasePath, version: 1, onCreate: _onCreate);
+    print(databasePath);
+
+    var db = await openDatabase(
+      databasePath,
+      version: 1,
+      onCreate: _onCreate,
+      password:  encrypt('Dummyapi'),
+    );
     return db;
   }
 

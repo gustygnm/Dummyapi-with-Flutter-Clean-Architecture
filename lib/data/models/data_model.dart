@@ -47,11 +47,11 @@ class DataItem extends Equatable{
     required this.picture,
   });
 
-  String id;
-  String title;
-  String firstName;
-  String lastName;
-  String picture;
+  final String id;
+  final String title;
+  final String firstName;
+  final String lastName;
+  final String picture;
 
   factory DataItem.fromEntity(DataItem movie) => DataItem(
     id: movie.id,
